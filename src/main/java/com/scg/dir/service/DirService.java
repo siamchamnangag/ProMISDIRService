@@ -1,5 +1,6 @@
 package com.scg.dir.service;
 
+import com.scg.dir.model.CreateDirDTO;
 import com.scg.dir.model.Dir;
 import com.scg.dir.model.DirMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,30 @@ public class DirService {
 
     @Autowired
     RestTemplate restTemplate;
+
+    public ResponseEntity<?> createDir(Dir dir) {
+        //Create new DIR
+        String url = "http://document-api.cloudhub.io/mock/v1/sap/dirs/";
+
+
+        ResponseEntity<?> responseEntity;
+
+        try {
+            HttpEntity<Dir> requestEntity = new HttpEntity<>(dir);
+            //responseEntity = new ResponseEntity<>(new DirMessage("test"),HttpStatus.OK);
+
+            responseEntity = new ResponseEntity<>(restTemplate.postForObject(url, requestEntity, CreateDirDTO.class),HttpStatus.OK);;
+        //return restTemplate.postForObject(url, requestEntity, Dir.class);
+//            response = restTemplate.getForObject(
+//                    url, DirMessage.class);
+        }catch (Exception ex) {
+
+            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"),HttpStatus.NOT_FOUND);
+
+        }
+
+        return responseEntity;
+    }
 
     public ResponseEntity<?> getDirFromId(int id) {
         //get DIR from API

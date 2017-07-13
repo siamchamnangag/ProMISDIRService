@@ -40,13 +40,12 @@ public class DirController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
-    ResponseEntity<?> add(@RequestBody String docid, @RequestBody String description, @RequestBody String status, @RequestBody String user
-        ,@RequestBody String link) {
+    @RequestMapping(value = "/dir", method = RequestMethod.POST)
+    ResponseEntity createNewDir (@RequestBody Dir dir) {
 
-        return new ResponseEntity(description,HttpStatus.OK);
+        ResponseEntity postDir = dirService.createDir(dir);
 
-
+        return postDir;
     }
 
 }
