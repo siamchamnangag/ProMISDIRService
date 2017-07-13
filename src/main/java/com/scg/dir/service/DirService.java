@@ -2,7 +2,6 @@ package com.scg.dir.service;
 
 import com.scg.dir.model.Dir;
 import com.scg.dir.model.DirMessage;
-import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
