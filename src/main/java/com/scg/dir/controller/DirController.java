@@ -1,6 +1,7 @@
 package com.scg.dir.controller;
 
 import com.scg.dir.model.Dir;
+import com.scg.dir.model.DirMessage;
 import com.scg.dir.service.DirService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -32,8 +33,8 @@ public class DirController {
 //
 //        return new ResponseEntity(dir,HttpStatus.OK);
 
-        Dir dir = dirService.getDirFromId(id);
-        return new ResponseEntity(dir,HttpStatus.OK);
+        ResponseEntity dir = dirService.getDirFromId(id);
+        return dir;
 
 //
 
