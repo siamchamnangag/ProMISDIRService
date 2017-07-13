@@ -23,17 +23,17 @@ public class DirControllerTest {
 
     @Test
     public void success_when_id_1() {
-//
-//        DirController dirController = new DirController();
-//        Dir dir = new DirMessage(1,"testing document 1","iw","pwp", "https://github.com/siamchamnangag/ProMISFileService/raw/master/src/main/resources/PMoC_complexity_and_effort_assessment.xlsx");
-//        dirController.setDirService(new MockDirService(dir));
-//        ResponseEntity expected = new ResponseEntity(dir, HttpStatus.OK);
-//        ResponseEntity actual = dirController.getDirById(1);
-//
-//
-//        //Dir actual = new DirService().getDirFromId(1);
-//
-//        assertEquals(expected.toString(), actual.toString());
+
+        DirController dirController = new DirController();
+        Dir dir = new Dir(1,"testing document 1","iw","pwp", "https://github.com/siamchamnangag/ProMISFileService/raw/master/src/main/resources/PMoC_complexity_and_effort_assessment.xlsx");
+        dirController.setDirService(new MockDirService(dir));
+        ResponseEntity expected = new ResponseEntity(dir, HttpStatus.OK);
+        ResponseEntity actual = dirController.getDirById(1);
+
+
+        //Dir actual = new DirService().getDirFromId(1);
+
+        assertEquals(expected.toString(), actual.toString());
 
     }
 
@@ -42,21 +42,22 @@ public class DirControllerTest {
 //
 //    }
 //
-//    class MockDirService extends DirService {
-//        private final DirMessage dir;
-//
-//        @Override
-//        public DirMessage getDirFromId(int id) {
-//            //get DIR from API
-//
-//            return dir;
-//        }
-//
-//        public MockDirService(DirMessage dir){
-//            this.dir = dir;
-//        }
-//
-//    }
+    class MockDirService extends DirService {
+        private final ResponseEntity dir;
+
+        @Override
+        public ResponseEntity getDirFromId(int id) {
+            //get DIR from API
+
+            return dir;
+        }
+
+        public MockDirService(Dir dir){
+
+            this.dir = new ResponseEntity(dir, HttpStatus.OK);
+        }
+
+    }
 
 
 
