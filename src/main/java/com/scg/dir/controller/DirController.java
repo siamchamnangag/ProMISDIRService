@@ -36,7 +36,6 @@ public class DirController {
         ResponseEntity dir = dirService.getDirFromId(id);
         return dir;
 
-//
 
     }
 
