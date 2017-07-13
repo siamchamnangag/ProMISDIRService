@@ -1,5 +1,6 @@
 package com.scg.dir.controller;
 
+import com.scg.dir.controller.DirController;
 import com.scg.dir.model.Dir;
 import com.scg.dir.model.DirMessage;
 import com.scg.dir.service.DirService;
