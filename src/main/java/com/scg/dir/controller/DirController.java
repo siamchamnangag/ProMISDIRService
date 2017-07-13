@@ -39,4 +39,14 @@ public class DirController {
 
     }
 
+
+    @RequestMapping(method = RequestMethod.POST)
+    ResponseEntity<?> add(@RequestBody String docid, @RequestBody String description, @RequestBody String status, @RequestBody String user
+        ,@RequestBody String link) {
+
+        return new ResponseEntity(description,HttpStatus.OK);
+
+
+    }
+
 }
