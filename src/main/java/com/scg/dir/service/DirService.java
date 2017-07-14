@@ -4,11 +4,10 @@ import com.scg.dir.model.CreateDirDTO;
 import com.scg.dir.model.Dir;
 import com.scg.dir.model.DirMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @Component
 public class DirService {
-    public DirService(){
+    public DirService() {
 
     }
 
@@ -38,15 +37,10 @@ public class DirService {
 
         try {
             HttpEntity<Dir> requestEntity = new HttpEntity<>(dir);
-            //responseEntity = new ResponseEntity<>(new DirMessage("test"),HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(restTemplate.postForObject(url, requestEntity, CreateDirDTO.class), HttpStatus.OK);
+        } catch (Exception ex) {
 
-            responseEntity = new ResponseEntity<>(restTemplate.postForObject(url, requestEntity, CreateDirDTO.class),HttpStatus.OK);;
-        //return restTemplate.postForObject(url, requestEntity, Dir.class);
-//            response = restTemplate.getForObject(
-//                    url, DirMessage.class);
-        }catch (Exception ex) {
-
-            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"),HttpStatus.NOT_FOUND);
+            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"), HttpStatus.NOT_FOUND);
 
         }
 
@@ -57,22 +51,15 @@ public class DirService {
         //get DIR from API
         //DirMessage response = new DirMessage();
         String url = "http://document-api.cloudhub.io/mock/v1/sap/dirs/" + id;
-        //HttpHeaders headers = new HttpHeaders();
-        //headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-
-        //HttpEntity<?> entity = new HttpEntity<>(headers);
 
         ResponseEntity<?> responseEntity;
 
         try {
             responseEntity = new ResponseEntity<>(restTemplate.getForObject(
-                    url, Dir.class),HttpStatus.OK);
+                    url, Dir.class), HttpStatus.OK);
+        } catch (Exception ex) {
 
-//            response = restTemplate.getForObject(
-//                    url, DirMessage.class);
-        }catch (Exception ex) {
-
-            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"),HttpStatus.NOT_FOUND);
+            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"), HttpStatus.NOT_FOUND);
 
         }
 

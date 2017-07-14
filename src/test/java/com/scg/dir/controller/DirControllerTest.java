@@ -1,17 +1,13 @@
 package com.scg.dir.controller;
 
-import com.scg.dir.controller.DirController;
 import com.scg.dir.model.Dir;
-import com.scg.dir.model.DirMessage;
 import com.scg.dir.service.DirService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by khan on 7/12/2017 AD.
