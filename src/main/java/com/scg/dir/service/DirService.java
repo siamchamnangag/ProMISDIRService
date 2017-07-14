@@ -31,8 +31,6 @@ public class DirService {
     public ResponseEntity createDir(Dir dir) {
         //Create new DIR
         String url = "http://document-api.cloudhub.io/mock/v1/sap/dirs/";
-
-
         ResponseEntity responseEntity;
 
         try {
