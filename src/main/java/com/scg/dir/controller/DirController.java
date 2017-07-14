@@ -26,17 +26,12 @@ public class DirController {
 
     @GetMapping("/dir/{id}")
     ResponseEntity getDirById (@PathVariable int id) {
-        ResponseEntity dir = dirService.getDirFromId(id);
-        return dir;
+        return dirService.getDirFromId(id);
     }
-
 
     @RequestMapping(value = "/dir", method = RequestMethod.POST)
     ResponseEntity createNewDir (@RequestBody Dir dir) {
-
-        ResponseEntity postDir = dirService.createDir(dir);
-
-        return postDir;
+        return dirService.createDir(dir);
     }
 
 }

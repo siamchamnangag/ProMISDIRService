@@ -28,38 +28,37 @@ public class DirService {
     @Autowired
     RestTemplate restTemplate;
 
-    public ResponseEntity<?> createDir(Dir dir) {
+    public ResponseEntity createDir(Dir dir) {
         //Create new DIR
         String url = "http://document-api.cloudhub.io/mock/v1/sap/dirs/";
 
 
-        ResponseEntity<?> responseEntity;
+        ResponseEntity responseEntity;
 
         try {
             HttpEntity<Dir> requestEntity = new HttpEntity<>(dir);
             responseEntity = new ResponseEntity<>(restTemplate.postForObject(url, requestEntity, CreateDirDTO.class), HttpStatus.OK);
         } catch (Exception ex) {
 
-            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"), HttpStatus.NOT_FOUND);
+            responseEntity = new ResponseEntity(new DirMessage("document is not found"), HttpStatus.NOT_FOUND);
 
         }
 
         return responseEntity;
     }
 
-    public ResponseEntity<?> getDirFromId(int id) {
+    public ResponseEntity getDirFromId(int id) {
         //get DIR from API
-        //DirMessage response = new DirMessage();
         String url = "http://document-api.cloudhub.io/mock/v1/sap/dirs/" + id;
 
-        ResponseEntity<?> responseEntity;
+        ResponseEntity responseEntity;
 
         try {
-            responseEntity = new ResponseEntity<>(restTemplate.getForObject(
+            responseEntity = new ResponseEntity(restTemplate.getForObject(
                     url, Dir.class), HttpStatus.OK);
         } catch (Exception ex) {
 
-            responseEntity = new ResponseEntity<>(new DirMessage("document is not found"), HttpStatus.NOT_FOUND);
+            responseEntity = new ResponseEntity(new DirMessage("document is not found"), HttpStatus.NOT_FOUND);
 
         }
 

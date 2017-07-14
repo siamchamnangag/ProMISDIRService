@@ -4,11 +4,11 @@ package com.scg.dir.model;
  * Created by khan on 7/12/2017 AD.
  */
 public class Dir {
-    private int docid;
-    private String description;
-    private String status;
-    private String user;
-    private String link;
+    protected int docid;
+    protected String description;
+    protected String status;
+    protected String user;
+    protected String link;
 
     public Dir() {
     }
